@@ -25,15 +25,15 @@ export const MockList = ({ onEditMock }: MockListProps) => {
       title: "Response",
       dataIndex: "response",
       key: "response",
-      width: "40%",
+      width: "35%",
       ellipsis: true,
       render: (text: string) => <Hint text={text} />,
     },
     {
-      title: "Status",
+      title: "De/Activate",
       dataIndex: "isActive",
       key: "isActive",
-      width: "10%",
+      width: "15%",
       align: "center" as AlignType,
       render: (isActive: boolean, record: MockData) => (
         <Switch

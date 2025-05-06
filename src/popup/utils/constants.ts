@@ -8,8 +8,6 @@ export const MESSAGES = {
   RESPONSE_REQUIRED: "Please enter mock response",
   URL_INVALID: "Please enter a valid URL",
   RESPONSE_INVALID: "Please enter a valid JSON response",
-  ADD_MOCK_TITLE: "Add New Mock",
-  EDIT_MOCK_TITLE: "Edit Mock",
   MOCK_EXIST: "A mock with this URL already exists!",
   EDIT_MOCK_EXIST: "Another mock is already using this URL!",
 } as const;

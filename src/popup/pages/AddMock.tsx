@@ -39,9 +39,7 @@ export const AddMock = ({ editingMock, onCancelEdit }: AddMockProps) => {
   };
 
   return (
-    <Card
-      title={editingMock ? MESSAGES.EDIT_MOCK_TITLE : MESSAGES.ADD_MOCK_TITLE}
-    >
+    <Card title={editingMock ? "Edit mock" : "Add new mock"}>
       <MockForm
         form={form}
         initialValues={editingMock}
