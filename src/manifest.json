@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Mock daAPIta extension",
+  "version": "1.0.0",
+  "description": "Chrome extension",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Mock API extension",
+    "default_icon": "assets/logo/icon_38.png"
+  },
+  "icons": {
+    "16": "assets/logo/icon_16.png",
+    "32": "assets/logo/icon_32.png",
+    "48": "assets/logo/icon_48.png",
+    "128": "assets/logo/icon_128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["declarativeNetRequest", "storage"],
+  "host_permissions": ["<all_urls>"]
+}
