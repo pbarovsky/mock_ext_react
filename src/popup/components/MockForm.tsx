@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Form, Input, Button, FormInstance } from "antd";
-import { MockData, Status } from "../app/App.types";
+import { MockData, Status } from "../../types";
 import { StatusTag } from "./StatusTag";
 import { urlRules, responseRules } from "../utils/validation";
 

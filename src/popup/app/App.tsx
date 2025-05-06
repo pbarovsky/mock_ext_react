@@ -6,8 +6,7 @@ import { MockList } from "../pages/MockList";
 import { Settings } from "../pages/Settings";
 import { MockProvider } from "../context/MockContext";
 import { Navigation } from "../components/Navigation";
-import { NavType } from "./App.types";
-import { MockData } from "../app/App.types";
+import { NavType, MockData } from "../../types";
 
 export const App = () => {
   const [editingMock, setEditingMock] = useState<MockData | undefined>();

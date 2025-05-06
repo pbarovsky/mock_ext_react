@@ -1,10 +1,10 @@
 import { Card, Form } from "antd";
 import { useState } from "react";
 import { useMock } from "../hooks/useMock";
-import { MockData, Status } from "../app/App.types";
+import { MockData, Status } from "../../types";
 import { MockForm } from "../components/MockForm";
 import { MESSAGES } from "../utils/constants";
-import { createMockData } from "../utils/mockUtils";
+import { createMockData } from "../utils/createMockData";
 
 interface AddMockProps {
   editingMock?: MockData;

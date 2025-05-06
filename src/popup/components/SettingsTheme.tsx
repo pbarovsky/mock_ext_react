@@ -1,5 +1,5 @@
 import { Card, Flex, Switch, Typography } from "antd";
-import { Theme } from "app/App.types";
+import { Theme } from "../../types";
 
 export const SettingsTheme = ({ isDarkMode, onThemeChange }: Theme) => {
   return (

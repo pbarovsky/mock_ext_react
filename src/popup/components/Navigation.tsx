@@ -4,7 +4,7 @@ import {
   SettingOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { NavType } from "../app/App.types";
+import { NavType } from "../../types";
 
 interface NavigationProps {
   activeNav: NavType;

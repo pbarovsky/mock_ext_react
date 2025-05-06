@@ -1,6 +1,6 @@
 import { Tag } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import { Status } from "app/App.types";
+import { Status } from "../../types";
 import { MESSAGES } from "../utils/constants";
 
 export const StatusTag = ({ type, message }: Status) => {

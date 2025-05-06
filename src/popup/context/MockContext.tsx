@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { MockContextType } from "./MockContext.types";
-import { MockData, Status } from "app/App.types";
+import { MockData, Status, MockContextType } from "../../types";
 import { MESSAGES } from "../utils/constants";
 
 const defaultContext: MockContextType = {

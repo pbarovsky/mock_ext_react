@@ -2,7 +2,7 @@ import type { AlignType } from "rc-table/lib/interface";
 import { Table, Button, Space, Switch, Popconfirm } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useMock } from "../hooks/useMock";
-import { MockData } from "../app/App.types";
+import { MockData } from "../../types";
 import { Hint } from "../components/Hint";
 
 interface MockListProps {
