@@ -24,17 +24,14 @@ export const App = () => {
   };
 
   const renderContent = () => {
-    switch (activeNav) {
-      case "add-mock":
-        return (
-          <AddMock editingMock={editingMock} onCancelEdit={handleCancelEdit} />
-        );
-      case "mock-list":
-        return <MockList onEditMock={handleEditMock} />;
-      case "settings":
-        return <Settings isDarkMode={isDarkMode} onThemeChange={toggleTheme} />;
-      default:
-        return null;
+    if (activeNav === "add-mock") {
+      return (
+        <AddMock editingMock={editingMock} onCancelEdit={handleCancelEdit} />
+      );
+    } else if (activeNav === "mock-list") {
+      return <MockList onEditMock={handleEditMock} />;
+    } else if (activeNav === "settings") {
+      return <Settings isDarkMode={isDarkMode} onThemeChange={toggleTheme} />;
     }
   };
 
