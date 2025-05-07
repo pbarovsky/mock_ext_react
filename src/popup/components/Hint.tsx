@@ -5,9 +5,23 @@ interface HintProps {
 }
 
 export const Hint = ({ text }: HintProps) => {
+  let formattedText = text;
+  try {
+    const parsedJson = JSON.parse(text);
+    formattedText = JSON.stringify(parsedJson, null, 2);
+  } catch {
+    formattedText = text;
+  }
+
   return (
-    <Tooltip title={text}>
-      <span>{text}</span>
+    <Tooltip
+      title={
+        <pre style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+          {formattedText}
+        </pre>
+      }
+    >
+      {text}
     </Tooltip>
   );
 };
