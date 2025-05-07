@@ -1,22 +1,9 @@
-import React, { createContext, useState, useEffect } from "react";
+import { MockContext } from "../context/MockContext";
+import { useState, useEffect, FC, ReactNode } from "react";
 import { MockData, Status, MockContextType } from "../../types";
 import { MESSAGES } from "../utils/constants";
 
-const defaultContext: MockContextType = {
-  mocks: [],
-  addMock: async () => {},
-  updateMock: async () => Promise.resolve(false),
-  deleteMock: async () => {},
-  toggleMock: async () => {},
-  status: { type: null, message: "" },
-  setStatus: () => {},
-};
-
-export const MockContext = createContext<MockContextType>(defaultContext);
-
-export const MockProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [mocks, setMocks] = useState<MockData[]>([]);
   const [status, setStatus] = useState<Status>({ type: null, message: "" });
 

@@ -1,12 +1,13 @@
-import { ConfigProvider, Flex, Layout, theme } from "antd";
+import { Flex, Layout } from "antd";
 import { useState } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { AddMock } from "../pages/AddMock";
 import { MockList } from "../pages/MockList";
 import { Settings } from "../pages/Settings";
-import { MockProvider } from "../context/MockContext";
+import { MockProvider } from "../providers/MockProvider";
 import { Navigation } from "../components/Navigation";
 import { NavType, MockData } from "../../types";
+import { ThemeProvider } from "../providers/ThemeProvider";
 
 export const App = () => {
   const [editingMock, setEditingMock] = useState<MockData | undefined>();
@@ -38,11 +39,7 @@ export const App = () => {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      }}
-    >
+    <ThemeProvider isDarkMode={isDarkMode}>
       <MockProvider>
         <Layout
           style={{ padding: "10px" }}
@@ -54,6 +51,6 @@ export const App = () => {
           {renderContent()}
         </Layout>
       </MockProvider>
-    </ConfigProvider>
+    </ThemeProvider>
   );
 };
