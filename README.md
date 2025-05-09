@@ -23,6 +23,7 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 - React + TypeScript
 - Ant Design
 - Chrome Extensions API
+- Vite + yarn
 
 ## Who needs it?
 
@@ -53,7 +54,7 @@ git clone --branch build --single-branch https://github.com/pbarovsky/mock_ext_r
 
 <p align="center">
   <img src="./images/2_light.png" alt="Список моков (светлая тема)"/>
-  <br><strong>List of mocks (light ehme)</strong>
+  <br><strong>List of mocks (light theme)</strong>
 </p>
 
 <p align="center">
