@@ -30,31 +30,14 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 2. QA-engineers - test interfaces with fixed mock data
 
 ## How to install
-
-### Manual build and install
-
 1. Clone the repository
-
 ```bash
-https://github.com/pbarovsky/mock_ext_react.git
+git clone --branch build --single-branch https://github.com/pbarovsky/mock_ext_react.git
 ```
-
-2. Go to the mock_ext_react directory
-
-```bash
-cd mock_ext_react
-```
-
-3. Run the command
-
-```bash
-yarn build
-```
-
-4. Go to `chrome://extensions/`
-5. Click the "Load unpacked extension" button
-6. Select the `dist` folder from the `mock_ext_react` folder
-7. Start using!
+2. Go to `chrome://extensions/`
+3. Click the "Load unpacked extension" button
+4. Select the `dist` folder from the `mock_ext_react` folder
+5. Start using!
 
 ## Images
 
