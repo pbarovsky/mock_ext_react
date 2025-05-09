@@ -1,5 +1,6 @@
 import { Tooltip } from "antd";
 import { CSSProperties } from "react";
+import { ViewFormattedJson } from "../utils/jsonUtils";
 
 interface HintProps {
   text: string;
@@ -13,12 +14,8 @@ const HintStyles: CSSProperties = {
 };
 
 export const Hint = ({ text }: HintProps) => {
-  const formattedText = /^[{[]/.test(text)
-    ? JSON.stringify(JSON.parse(text), null, 2)
-    : text;
-
   return (
-    <Tooltip title={<pre style={HintStyles}>{formattedText}</pre>}>
+    <Tooltip title={<pre style={HintStyles}>{ViewFormattedJson(text)}</pre>}>
       {text}
     </Tooltip>
   );

@@ -2,6 +2,7 @@ import { MockContext } from "../context/MockContext";
 import { useState, useEffect, FC, ReactNode } from "react";
 import { MockData, Status, MockContextType } from "../../types";
 import { MESSAGES } from "../utils/constants";
+import { SaveCleanJson } from "../utils/jsonUtils";
 
 export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [mocks, setMocks] = useState<MockData[]>([]);
@@ -21,9 +22,7 @@ export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
     if (typeof chrome !== "undefined" && chrome.storage) {
       await chrome.storage.local.set({ mocks: newMocks });
       const result = await chrome.storage.local.get(["mocks"]);
-      if (result.mocks) {
-        setMocks(result.mocks);
-      }
+      setMocks(result.mocks || []);
     }
   };
 
@@ -33,19 +32,26 @@ export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
       return;
     }
 
-    const newMocks = [...mocks, mock];
-    await saveMocks(newMocks);
+    const cleanedMock: MockData = {
+      ...mock,
+      response: SaveCleanJson(mock.response),
+    };
+
+    await saveMocks([...mocks, cleanedMock]);
     setStatus({ type: "success", message: MESSAGES.MOCK_ADDED });
   };
 
   const updateMock = async (mock: MockData): Promise<boolean> => {
     const curMock = mocks.find((m) => m.id === mock.id);
 
-    if (
+    const cleanedMock = { ...mock, response: SaveCleanJson(mock.response) };
+
+    const isSame =
       curMock &&
-      curMock.url === mock.url &&
-      curMock.response === mock.response
-    ) {
+      curMock.url === cleanedMock.url &&
+      SaveCleanJson(curMock.response) === cleanedMock.response;
+
+    if (isSame) {
       setStatus({ type: "error", message: MESSAGES.MOCK_UPDATED_FAILED });
       return false;
     }
@@ -55,8 +61,7 @@ export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
       return false;
     }
 
-    const newMocks = mocks.map((m) => (m.id === mock.id ? mock : m));
-    await saveMocks(newMocks);
+    await saveMocks(mocks.map((m) => (m.id === mock.id ? cleanedMock : m)));
     setStatus({ type: "success", message: MESSAGES.MOCK_UPDATED });
 
     return true;
