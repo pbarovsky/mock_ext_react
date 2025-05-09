@@ -3,7 +3,7 @@ import { Form, Input, Button, FormInstance } from "antd";
 import { MockData, Status } from "../../types";
 import { StatusTag } from "./StatusTag";
 import { urlRules, responseRules } from "../utils/validation";
-import { ViewFormattedJson } from "../utils/jsonUtils";
+import { formattedJson } from "../utils/jsonUtils";
 
 interface MockFormProps {
   initialValues?: MockData;
@@ -43,7 +43,7 @@ export const MockForm = ({
       onFinish={onSubmit}
       initialValues={{
         ...initialValues,
-        response: ViewFormattedJson(initialValues?.response || ""),
+        response: formattedJson(initialValues?.response || ""),
       }}
     >
       <Form.Item name="url" label="URL" rules={urlRules}>

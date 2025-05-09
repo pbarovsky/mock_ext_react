@@ -1,4 +1,4 @@
-export const SaveCleanJson = (response: string): string => {
+export const cleanedJson = (response: string): string => {
   try {
     return JSON.stringify(JSON.parse(response));
   } catch (e) {
@@ -6,5 +6,5 @@ export const SaveCleanJson = (response: string): string => {
   }
 };
 
-export const ViewFormattedJson = (text: string): string =>
+export const formattedJson = (text: string): string =>
   /^[{[]/.test(text) ? JSON.stringify(JSON.parse(text), null, 2) : text;

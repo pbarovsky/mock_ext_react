@@ -2,7 +2,7 @@ import { MockContext } from "../context/MockContext";
 import { useState, useEffect, FC, ReactNode } from "react";
 import { MockData, Status, MockContextType } from "../../types";
 import { MESSAGES } from "../utils/constants";
-import { SaveCleanJson } from "../utils/jsonUtils";
+import { cleanedJson } from "../utils/jsonUtils";
 
 export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [mocks, setMocks] = useState<MockData[]>([]);
@@ -34,7 +34,7 @@ export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     const cleanedMock: MockData = {
       ...mock,
-      response: SaveCleanJson(mock.response),
+      response: cleanedJson(mock.response),
     };
 
     await saveMocks([...mocks, cleanedMock]);
@@ -44,12 +44,12 @@ export const MockProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const updateMock = async (mock: MockData): Promise<boolean> => {
     const curMock = mocks.find((m) => m.id === mock.id);
 
-    const cleanedMock = { ...mock, response: SaveCleanJson(mock.response) };
+    const cleanedMock = { ...mock, response: cleanedJson(mock.response) };
 
     const isSame =
       curMock &&
       curMock.url === cleanedMock.url &&
-      SaveCleanJson(curMock.response) === cleanedMock.response;
+      cleanedJson(curMock.response) === cleanedMock.response;
 
     if (isSame) {
       setStatus({ type: "error", message: MESSAGES.MOCK_UPDATED_FAILED });
