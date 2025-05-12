@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { MockContext } from "../context/MockContext";
+import { MockContextType } from "../../types";
 
-export const useMock = () => {
+export const useMock = (): MockContextType => {
   const context = useContext(MockContext);
 
   if (!context) {

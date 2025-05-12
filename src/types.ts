@@ -24,5 +24,5 @@ export type NavType = "add-mock" | "mock-list" | "settings";
 
 export interface Theme {
   isDarkMode: boolean;
-  onThemeChange: (checked: boolean) => void;
+  toggleTheme: () => void;
 }

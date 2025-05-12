@@ -1,12 +1,13 @@
 import { Card, Flex, Switch, Typography } from "antd";
-import { Theme } from "../../types";
+import { useTheme } from "../hooks/useTheme";
 
-export const SettingsTheme = ({ isDarkMode, onThemeChange }: Theme) => {
+export const SettingsTheme = () => {
+  const { toggleTheme } = useTheme();
   return (
     <Card title="Theme">
       <Flex align="center" justify="space-between">
         <Typography.Text>Dark Theme</Typography.Text>
-        <Switch checked={isDarkMode} onChange={onThemeChange} />
+        <Switch onChange={toggleTheme} />
       </Flex>
     </Card>
   );

@@ -4,12 +4,13 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { useMock } from "../hooks/useMock";
 import { MockData } from "../../types";
 import { Hint } from "../components/Hint";
+import { FC } from "react";
 
 interface MockListProps {
   onEditMock: (mock: MockData) => void;
 }
 
-export const MockList = ({ onEditMock }: MockListProps) => {
+export const MockList: FC<MockListProps> = ({ onEditMock }) => {
   const { mocks, deleteMock, toggleMock } = useMock();
 
   const columns = [

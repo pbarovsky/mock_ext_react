@@ -1,22 +1,16 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { Theme } from "../../types";
 
-export const useTheme = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+export const useTheme = (): Theme => {
+  const context = useContext(ThemeContext);
 
-  useEffect(() => {
-    if (typeof chrome !== "undefined" && chrome.storage) {
-      chrome.storage.local.get(["theme"], (result) => {
-        setIsDarkMode(result.theme === "dark");
-      });
-    }
-  }, []);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
 
-  const toggleTheme = (checked: boolean) => {
-    setIsDarkMode(checked);
-    if (typeof chrome !== "undefined" && chrome.storage) {
-      chrome.storage.local.set({ theme: checked ? "dark" : "light" });
-    }
+  return {
+    isDarkMode: context.isDarkMode,
+    toggleTheme: context.toggleTheme,
   };
-
-  return { isDarkMode, toggleTheme };
 };

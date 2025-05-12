@@ -1,22 +1,36 @@
+import { useEffect, useState, ReactNode, FC } from "react";
 import { ConfigProvider, theme } from "antd";
-import { FC, ReactNode } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 
-interface ThemeProviderProps {
-  children: ReactNode;
-  isDarkMode: boolean;
-}
+export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({
-  children,
-  isDarkMode,
-}) => {
+  useEffect(() => {
+    if (typeof chrome !== "undefined" && chrome.storage) {
+      chrome.storage.local.get(["theme"], (result) => {
+        setIsDarkMode(result.theme === "dark");
+      });
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prev) => {
+      if (typeof chrome !== "undefined" && chrome.storage) {
+        chrome.storage.local.set({ theme: !prev ? "dark" : "light" });
+      }
+      return !prev;
+    });
+  };
+
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
-      }}
-    >
-      {children}
-    </ConfigProvider>
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      <ConfigProvider
+        theme={{
+          algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        }}
+      >
+        {children}
+      </ConfigProvider>
+    </ThemeContext.Provider>
   );
 };

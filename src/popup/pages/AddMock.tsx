@@ -1,5 +1,5 @@
 import { Card, Form } from "antd";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { useMock } from "../hooks/useMock";
 import { MockData, Status } from "../../types";
 import { MockForm } from "../components/MockForm";
@@ -11,7 +11,7 @@ interface AddMockProps {
   onCancelEdit?: () => void;
 }
 
-export const AddMock = ({ editingMock, onCancelEdit }: AddMockProps) => {
+export const AddMock: FC<AddMockProps> = ({ editingMock, onCancelEdit }) => {
   const { addMock, updateMock, status, setStatus } = useMock();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form] = Form.useForm<{ url: string; response: string }>();

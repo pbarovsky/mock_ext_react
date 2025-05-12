@@ -1,6 +1,5 @@
-import { Flex, Layout } from "antd";
+import { Flex } from "antd";
 import { useState } from "react";
-import { useTheme } from "../hooks/useTheme";
 import { AddMock } from "../pages/AddMock";
 import { MockList } from "../pages/MockList";
 import { Settings } from "../pages/Settings";
@@ -8,11 +7,11 @@ import { MockProvider } from "../providers/MockProvider";
 import { Navigation } from "../components/Navigation";
 import { NavType, MockData } from "../../types";
 import { ThemeProvider } from "../providers/ThemeProvider";
+import { Layout } from "../components/Layot";
 
 export const App = () => {
   const [editingMock, setEditingMock] = useState<MockData | undefined>();
   const [activeNav, setActiveNav] = useState<NavType>("add-mock");
-  const { isDarkMode, toggleTheme } = useTheme();
 
   const handleEditMock = (mock: MockData) => {
     setEditingMock(mock);
@@ -31,17 +30,14 @@ export const App = () => {
     } else if (activeNav === "mock-list") {
       return <MockList onEditMock={handleEditMock} />;
     } else if (activeNav === "settings") {
-      return <Settings isDarkMode={isDarkMode} onThemeChange={toggleTheme} />;
+      return <Settings />;
     }
   };
 
   return (
-    <ThemeProvider isDarkMode={isDarkMode}>
+    <ThemeProvider>
       <MockProvider>
-        <Layout
-          style={{ padding: "10px" }}
-          className={isDarkMode ? "dark-theme" : "light-theme"}
-        >
+        <Layout>
           <Flex justify="center" style={{ marginBottom: "15px" }}>
             <Navigation activeNav={activeNav} onNavChange={setActiveNav} />
           </Flex>
