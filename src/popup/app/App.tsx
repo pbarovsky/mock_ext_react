@@ -10,23 +10,21 @@ import { ThemeProvider } from "../providers/ThemeProvider";
 import { Layout } from "../components/Layot";
 
 export const App = () => {
-  const [editingMock, setEditingMock] = useState<MockData | undefined>();
+  const [mockId, setMockId] = useState<string | undefined>();
   const [activeNav, setActiveNav] = useState<NavType>("add-mock");
 
   const handleEditMock = (mock: MockData) => {
-    setEditingMock(mock);
+    setMockId(mock.id);
     setActiveNav("add-mock");
   };
 
   const handleCancelEdit = () => {
-    setEditingMock(undefined);
+    setMockId(undefined);
   };
 
   const renderContent = () => {
     if (activeNav === "add-mock") {
-      return (
-        <AddMock editingMock={editingMock} onCancelEdit={handleCancelEdit} />
-      );
+      return <AddMock mockId={mockId} onCancelEdit={handleCancelEdit} />;
     } else if (activeNav === "mock-list") {
       return <MockList onEditMock={handleEditMock} />;
     } else if (activeNav === "settings") {

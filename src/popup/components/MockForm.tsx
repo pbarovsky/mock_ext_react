@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Form, Input, Button, FormInstance } from "antd";
+import { Form, Input, Button } from "antd";
 import { MockData, Status } from "../../types";
 import { StatusTag } from "./StatusTag";
 import { urlRules, responseRules } from "../utils/validation";
@@ -7,7 +7,7 @@ import { formattedJson } from "../utils/jsonUtils";
 
 interface MockFormProps {
   initialValues?: MockData;
-  onSubmit: (values: { url: string; response: string }) => Promise<void>;
+  onSubmit: (values: { url: string; response: string }) => Promise<boolean>;
   onCancel?: () => void;
   isSubmitting: boolean;
   isEditing: boolean;
@@ -22,12 +22,13 @@ export const MockForm = ({
   isSubmitting,
   isEditing,
   status,
-  form,
   setStatus,
-}: MockFormProps & {
-  form: FormInstance<{ url: string; response: string }>;
-}) => {
-  useEffect(() => form.resetFields(), [initialValues]);
+}: MockFormProps) => {
+  const [form] = Form.useForm<{ url: string; response: string }>();
+
+  useEffect(() => {
+    form.resetFields();
+  }, [initialValues]);
 
   useEffect(() => {
     if (status.type) {
@@ -36,11 +37,22 @@ export const MockForm = ({
     }
   }, [status, setStatus]);
 
+  const handleSubmit = async (values: { url: string; response: string }) => {
+    const success = await onSubmit(values);
+
+    if (success) {
+      form.resetFields();
+      if (isEditing) {
+        onCancel?.();
+      }
+    }
+  };
+
   return (
     <Form
       form={form}
       layout="vertical"
-      onFinish={onSubmit}
+      onFinish={handleSubmit}
       initialValues={{
         ...initialValues,
         response: formattedJson(initialValues?.response || ""),
