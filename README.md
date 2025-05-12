@@ -31,10 +31,13 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 2. QA-engineers - test interfaces with fixed mock data.
 
 ## How to install
+
 1. Clone the repository.
+
 ```bash
 git clone --branch build --single-branch https://github.com/pbarovsky/mock_ext_react.git
 ```
+
 2. Go to `chrome://extensions/`.
 3. Click the "Load unpacked extension" button.
 4. Select the `dist` folder from the `mock_ext_react` folder.
@@ -72,54 +75,3 @@ git clone --branch build --single-branch https://github.com/pbarovsky/mock_ext_r
   <br><strong>
 An example of how to use the extension. Mocks enabled.</strong>
 </p>
-
-## Project structure
-```bash
-.
-├── eslint.config.js
-├── index.html
-├── package.json
-├── README.md
-├── src
-│   ├── assets
-│   │   └── logo
-│   │       ├── ...
-│   ├── background.ts
-│   ├── global.css
-│   ├── main.tsx
-│   ├── manifest.json
-│   ├── popup
-│   │   ├── app
-│   │   │   └── App.tsx
-│   │   ├── components
-│   │   │   ├── Hint.tsx
-│   │   │   ├── MockForm.tsx
-│   │   │   ├── Navigation.tsx
-│   │   │   ├── SettingAbout.tsx
-│   │   │   ├── SettingsHowTo.tsx
-│   │   │   ├── SettingsTheme.tsx
-│   │   │   └── StatusTag.tsx
-│   │   ├── context
-│   │   │   └──  MockContext.ts
-│   │   ├── hooks
-│   │   │   ├── useMock.ts
-│   │   │   └── useTheme.ts
-│   │   ├── pages
-│   │   │   ├── AddMock.tsx
-│   │   │   ├── MockList.tsx
-│   │   │   └── Settings.tsx
-│   │   ├── providers
-│   │   │   ├── MockProvider.tsx
-│   │   │   └── ThemeProvider.tsx
-│   │   └── utils
-│   │       ├── constants.ts
-│   │       ├── createMockData.ts
-│   │       ├── jsonUtils.ts
-│   │       └── validation.ts
-│   └── types.ts
-├── tsconfig.app.json
-├── tsconfig.json
-├── tsconfig.node.json
-├── vite.config.ts
-└── yarn.lock
-```
