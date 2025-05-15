@@ -1,8 +1,8 @@
-import { MockContext } from "../../../shared/lib/mock/MockContext";
 import { useState, useEffect, FC, ReactNode, useCallback } from "react";
-import { MockData, Status, MockContextType } from "../../../shared/lib/types";
-import { MESSAGES } from "shared/utils/constants";
-import { cleanedJson } from "shared/utils/jsonUtils";
+import { MockData, Status, MockContextType } from "@shared/lib/types";
+import { MESSAGES } from "@shared/utils/constants";
+import { cleanedJson } from "@shared/utils/jsonUtils";
+import { MockContext } from "@shared/lib/mock/MockContext";
 
 export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const [mocks, setMocks] = useState<MockData[]>([]);

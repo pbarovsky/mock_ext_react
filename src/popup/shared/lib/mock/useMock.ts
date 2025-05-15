@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MockContext } from "./MockContext";
-import { MockContextType } from "../types";
+import { MockContextType } from "@types";
 
 export const useMock = (): MockContextType => {
   const context = useContext(MockContext);

@@ -1,11 +1,11 @@
+import { useNavigate, useLocation } from "react-router";
 import { Flex, Segmented, Space } from "antd";
 import {
   PlusCircleOutlined,
   SettingOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { NavType } from "../../lib/types";
-import { useNavigate, useLocation } from "react-router";
+import { NavType } from "@types";
 
 interface Props {
   activeNav: NavType;

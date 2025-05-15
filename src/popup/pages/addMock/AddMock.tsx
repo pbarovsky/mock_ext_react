@@ -1,7 +1,7 @@
-import { MockBuilder } from "features/AddMock";
-import { PageLayout } from "widgets/PageLayout";
+import { MockBuilder } from "@features/AddMock";
+import { PageLayout } from "@widgets/PageLayout";
 
-export const AddMock = () => {
+export const Page = () => {
   return (
     <PageLayout activeNav="add-mock">
       <MockBuilder />

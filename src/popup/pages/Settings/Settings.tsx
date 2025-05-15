@@ -1,6 +1,6 @@
 import { Space } from "antd";
-import { PageLayout } from "widgets/PageLayout";
-import { SettingAbout, SettingsHowTo, SettingsTheme } from "widgets/Settings";
+import { PageLayout } from "@widgets/PageLayout";
+import { SettingAbout, SettingsHowTo, SettingsTheme } from "@widgets/Settings";
 
 export const Page = () => {
   return (

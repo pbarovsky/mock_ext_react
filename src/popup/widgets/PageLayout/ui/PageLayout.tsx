@@ -1,9 +1,8 @@
-import { Layout as AntLayout } from "antd";
 import { FC, ReactNode } from "react";
-import { NavigationBar } from "shared/ui/Navigation";
-import { NavType } from "../../../shared/lib/types";
 import { useLocation } from "react-router-dom";
-import { theme } from "antd";
+import { Layout as AntLayout, theme } from "antd";
+import { NavigationBar } from "@shared/ui/Navigation";
+import { NavType } from "@shared/lib/types";
 
 type Props = {
   children: ReactNode;

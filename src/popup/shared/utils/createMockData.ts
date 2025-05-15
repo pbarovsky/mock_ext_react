@@ -1,4 +1,4 @@
-import { MockData } from "../../types";
+import { MockData } from "@types";
 
 export const createMockData = (
   values: { url: string; response: string },

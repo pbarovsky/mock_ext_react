@@ -1,16 +1,16 @@
-import { AddMock } from "pages/addMock/AddMock";
-import { MockListPage } from "pages/MockList";
-import { SettingsPage } from "pages/Settings";
+import { AddMockPage } from "@pages/addMock";
+import { MockListPage } from "@pages/MockList";
+import { SettingsPage } from "@pages/Settings";
 import { createMemoryRouter, RouterProvider } from "react-router";
 
 const router = createMemoryRouter([
   {
     path: "/",
-    element: <AddMock />,
+    element: <AddMockPage />,
   },
   {
     path: "/add-mock/:mockId",
-    element: <AddMock />,
+    element: <AddMockPage />,
   },
   {
     path: "/list",

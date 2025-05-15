@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { MockData } from "../../../shared/lib/types";
-import { useMock } from "../../../shared/lib/mock/useMock";
-import { Switch } from "shared/ui/Switch";
+import { MockData } from "@shared/lib/types";
+import { useMock } from "@shared/lib/mock/useMock";
+import { Switch } from "@shared/ui/Switch";
 
 type Props = {
   isActive: boolean;

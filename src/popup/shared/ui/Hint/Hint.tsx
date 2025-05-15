@@ -1,6 +1,6 @@
-import { Tooltip } from "antd";
 import { CSSProperties } from "react";
-import { formattedJson } from "../../utils/jsonUtils";
+import { Tooltip } from "antd";
+import { formattedJson } from "@shared/utils/jsonUtils";
 
 interface HintProps {
   text: string;
