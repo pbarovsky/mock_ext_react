@@ -85,11 +85,19 @@ export const Form = ({
         />
       </AntForm.Item>
       <AntForm.Item>
-        <Button type="primary" htmlType="submit" loading={isSubmitting}>
+        <Button
+          style={{ cursor: "pointer" }}
+          type="primary"
+          htmlType="submit"
+          loading={isSubmitting}
+        >
           {isEditing ? "Update" : "Add"} Mock
         </Button>
         {isEditing && (
-          <Button style={{ marginLeft: 8 }} onClick={handleCancel}>
+          <Button
+            style={{ marginLeft: 8, cursor: "pointer" }}
+            onClick={handleCancel}
+          >
             Cancel
           </Button>
         )}

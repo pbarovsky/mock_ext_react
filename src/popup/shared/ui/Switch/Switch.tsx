@@ -14,6 +14,11 @@ export const Switch = <T,>({
   value,
 }: Props<T>) => {
   return (
-    <AntSwitch checked={checked} onChange={() => onChange(value)} size={size} />
+    <AntSwitch
+      style={{ cursor: "pointer" }}
+      checked={checked}
+      onChange={() => onChange(value)}
+      size={size}
+    />
   );
 };
