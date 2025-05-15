@@ -1,3 +1,10 @@
+export type NavType = "add-mock" | "list" | "settings";
+
+export interface Theme {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+}
+
 export interface MockData {
   id: string;
   url: string;
@@ -18,11 +25,4 @@ export interface MockContextType {
   toggleMock: (id: string) => Promise<void>;
   status: Status;
   setStatus: (status: Status) => void;
-}
-
-export type NavType = "add-mock" | "mock-list" | "settings";
-
-export interface Theme {
-  isDarkMode: boolean;
-  toggleTheme: () => void;
 }

@@ -1,6 +1,5 @@
 import { useMock } from "./useMock";
 import { useState } from "react";
-import { MockData } from "../../types";
 import { createMockData } from "../utils/createMockData";
 import { MESSAGES } from "../utils/constants";
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Form, Input, Button } from "antd";
 import { MockData, Status } from "../../types";
 import { StatusTag } from "./StatusTag";
@@ -11,6 +11,7 @@ interface MockFormProps {
   onCancel?: () => void;
   isSubmitting: boolean;
   isEditing: boolean;
+  setIsEditing: (isEditing: boolean) => void;
   status: Status;
   setStatus: (status: Status) => void;
 }
@@ -21,13 +22,26 @@ export const MockForm = ({
   onCancel,
   isSubmitting,
   isEditing,
+  setIsEditing,
   status,
   setStatus,
 }: MockFormProps) => {
   const [form] = Form.useForm<{ url: string; response: string }>();
+  const [formValues, setFormValues] = useState<{
+    url: string;
+    response: string;
+  }>({
+    url: initialValues?.url || "",
+    response: formattedJson(initialValues?.response || ""),
+  });
 
   useEffect(() => {
-    form.resetFields();
+    if (initialValues) {
+      setFormValues({
+        url: initialValues.url,
+        response: formattedJson(initialValues.response || ""),
+      });
+    }
   }, [initialValues]);
 
   useEffect(() => {
@@ -41,11 +55,17 @@ export const MockForm = ({
     const success = await onSubmit(values);
 
     if (success) {
-      form.resetFields();
-      if (isEditing) {
-        onCancel?.();
-      }
+      setFormValues({ url: "", response: "" });
+      form.setFieldsValue({ url: "", response: "" });
+      setIsEditing(false);
     }
+  };
+
+  const handleCancel = () => {
+    setFormValues({ url: "", response: "" });
+    form.setFieldsValue({ url: "", response: "" });
+    setIsEditing(false);
+    onCancel?.();
   };
 
   return (
@@ -53,10 +73,7 @@ export const MockForm = ({
       form={form}
       layout="vertical"
       onFinish={handleSubmit}
-      initialValues={{
-        ...initialValues,
-        response: formattedJson(initialValues?.response || ""),
-      }}
+      initialValues={formValues}
     >
       <Form.Item name="url" label="URL" rules={urlRules}>
         <Input placeholder="https://mockapi.com/data" />
@@ -72,10 +89,7 @@ export const MockForm = ({
           {isEditing ? "Update" : "Add"} Mock
         </Button>
         {isEditing && (
-          <Button
-            style={{ marginLeft: 8 }}
-            onClick={() => (form.resetFields(), onCancel?.())}
-          >
+          <Button style={{ marginLeft: 8 }} onClick={handleCancel}>
             Cancel
           </Button>
         )}
