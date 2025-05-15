@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { MockContextType } from "../../types";
+import { MockContextType } from "../types";
 
 const defaultContext: MockContextType = {
   mocks: [],

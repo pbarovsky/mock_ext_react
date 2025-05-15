@@ -1,7 +1,7 @@
 import { Popconfirm as AntPopconfirm } from "antd";
 import { FC, ReactNode } from "react";
-import { MockData } from "../../../../types";
-import { useMock } from "../../../hooks/useMock";
+import { MockData } from "../../../shared/lib/types";
+import { useMock } from "../../../shared/lib/mock/useMock";
 
 export const Popcomfirm: FC<{ record: MockData; children: ReactNode }> = ({
   record,

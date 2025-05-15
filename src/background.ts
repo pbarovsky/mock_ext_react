@@ -1,4 +1,4 @@
-import { MockData } from "./types";
+import { MockData } from "./popup/shared/lib/types";
 
 // обновление правил
 const updateMockRules = (mocks: MockData[]) => {

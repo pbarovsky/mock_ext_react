@@ -4,7 +4,7 @@ import {
   SettingOutlined,
   UnorderedListOutlined,
 } from "@ant-design/icons";
-import { NavType } from "../../../../types";
+import { NavType } from "../../lib/types";
 import { useNavigate, useLocation } from "react-router";
 
 interface Props {

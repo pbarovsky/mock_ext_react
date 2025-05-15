@@ -1,6 +1,6 @@
 import { Card, Flex, Typography } from "antd";
 import { Switch } from "shared/ui/Switch";
-import { useTheme } from "../../../hooks/useTheme";
+import { useTheme } from "../../../shared/lib/theme/useTheme";
 
 export const ThemeContent = () => {
   const { toggleTheme, isDarkMode } = useTheme();

@@ -1,6 +1,6 @@
 import { useEffect, useState, ReactNode, FC } from "react";
 import { ConfigProvider, theme } from "antd";
-import { ThemeContext } from "../../../context/ThemeContext";
+import { ThemeContext } from "../../../shared/lib/theme/ThemeContext";
 
 export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);

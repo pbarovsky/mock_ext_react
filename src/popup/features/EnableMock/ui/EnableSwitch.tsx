@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { MockData } from "../../../../types";
-import { useMock } from "../../../hooks/useMock";
+import { MockData } from "../../../shared/lib/types";
+import { useMock } from "../../../shared/lib/mock/useMock";
 import { Switch } from "shared/ui/Switch";
 
 type Props = {

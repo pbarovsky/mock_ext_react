@@ -5,8 +5,8 @@ import { DeleteMockButton } from "features/DeleteMock";
 import { ComfirmDeleteMock } from "features/ComfirmDelete";
 import { EnableMockSwitch } from "features/EnableMock";
 import type { AlignType } from "rc-table/lib/interface";
-import { useMock } from "../../../hooks/useMock";
-import { MockData } from "../../../../types";
+import { useMock } from "../../../shared/lib/mock/useMock";
+import { MockData } from "../../../shared/lib/types";
 
 export const Table = () => {
   const { mocks } = useMock();

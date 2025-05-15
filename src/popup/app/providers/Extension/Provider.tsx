@@ -1,6 +1,6 @@
-import { MockContext } from "../../../context/MockContext";
+import { MockContext } from "../../../shared/lib/mock/MockContext";
 import { useState, useEffect, FC, ReactNode, useCallback } from "react";
-import { MockData, Status, MockContextType } from "../../../../types";
+import { MockData, Status, MockContextType } from "../../../shared/lib/types";
 import { MESSAGES } from "shared/utils/constants";
 import { cleanedJson } from "shared/utils/jsonUtils";
 

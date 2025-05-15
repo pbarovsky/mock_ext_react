@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form as AntForm, Input, Button } from "antd";
-import { MockData, Status } from "../../../../types";
+import { MockData, Status } from "../../../shared/lib/types";
 import { StatusTag } from "shared/ui/Status";
 import { urlRules, responseRules } from "../../../shared/utils/validation";
 import { formattedJson } from "shared/utils/jsonUtils";
