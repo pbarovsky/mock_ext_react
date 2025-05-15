@@ -21,9 +21,11 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 ## Technologies
 
 - React + TypeScript
+- React router
 - Ant Design
 - Chrome Extensions API
 - Vite + yarn
+- FSD architecture
 
 ## Who needs it?
 
@@ -32,6 +34,8 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 
 ## How to install
 
+### Easy installation
+
 1. Clone the repository.
 
 ```bash
@@ -39,39 +43,72 @@ git clone --branch build --single-branch https://github.com/pbarovsky/mock_ext_r
 ```
 
 2. Go to `chrome://extensions/`.
-3. Click the "Load unpacked extension" button.
-4. Select the `dist` folder from the `mock_ext_react` folder.
-5. Start using!
+3. Enable developer mode.
+4. Click the "Load unpacked extension" button.
+5. Select the `dist` folder from the `mock_ext_react` folder.
+6. Start using!
+
+### Manual project assembly and installation
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/pbarovsky/mock_ext_react.git
+```
+
+2. Go to the project directory.
+
+```bash
+cd /mock_ext_react
+```
+
+3. Perform dependency installation.
+
+```bash
+yarn
+```
+
+4. Perform project assembly (this will create a `dist` folder).
+
+```bash
+yarn build
+```
+
+5. Go to `chrome://extensions/`.
+6. Enable developer mode.
+7. Click the "Load unpacked extension" button.
+8. Select the `dist` folder from the `mock_ext_react` folder.
+9. Start using!
 
 ## Images
 
 <p align="center">
   <img src="./images/1.png" alt="Добавить мок"/>
-  <br><strong>Add mock</strong>
+  <br>Add mock
 </p>
 
 <p align="center">
   <img src="./images/2.png" alt="Список моков (тёмная тема)"/>
-  <br><strong>List of mocks (dark theme)</strong>
+  <br>List of mocks (dark theme)
 </p>
 
 <p align="center">
   <img src="./images/2_light.png" alt="Список моков (светлая тема)"/>
-  <br><strong>List of mocks (light theme)</strong>
+  <br>List of mocks (light theme)
 </p>
 
 <p align="center">
   <img src="./images/3.png" alt="Настройки"/>
-  <br><strong>Settings</strong>
+  <br>Settings
 </p>
 
 <p align="center">
   <img src="./images/use_1.png" alt="Пример - До"/>
-  <br><strong>Example of using the extension. The mocks are turned off.</strong>
+  <br>Example of using the extension. The mocks are turned off.
 </p>
 
 <p align="center">
   <img src="./images/use_2.png" alt="Пример - После"/>
-  <br><strong>
-An example of how to use the extension. Mocks enabled.</strong>
+  <br>
+An example of how to use the extension. Mocks enabled.
 </p>

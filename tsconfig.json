@@ -14,12 +14,13 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "paths": {
-      "app/*": ["./src/popup/app/*"],
-      "pages/*": ["./src/popup/pages/*"],
-      "widgets/*": ["./src/popup/widgets/*"],
-      "features/*": ["./src/popup/features/*"],
-      "entities/*": ["./src/popup/entities/*"],
-      "shared/*": ["./src/popup/shared/*"]
+      "@app/*": ["./src/popup/app/*"],
+      "@pages/*": ["./src/popup/pages/*"],
+      "@widgets/*": ["./src/popup/widgets/*"],
+      "@features/*": ["./src/popup/features/*"],
+      "@entities/*": ["./src/popup/entities/*"],
+      "@shared/*": ["./src/popup/shared/*"],
+      "@types": ["./src/popup/shared/lib/types.ts"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

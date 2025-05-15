@@ -1,4 +1,4 @@
-import { MockData } from "./types";
+import { MockData } from "@types";
 
 // обновление правил
 const updateMockRules = (mocks: MockData[]) => {

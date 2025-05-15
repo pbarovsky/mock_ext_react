@@ -1,47 +1,15 @@
-import { Flex } from "antd";
-import { useState } from "react";
-import { AddMock } from "../pages/AddMock";
-import { MockList } from "../pages/MockList";
-import { Settings } from "../pages/Settings";
-import { MockProvider } from "../providers/MockProvider";
-import { Navigation } from "../components/Navigation";
-import { NavType, MockData } from "../../types";
-import { ThemeProvider } from "../providers/ThemeProvider";
-import { Layout } from "../components/Layot";
+import {
+  ExtensionApiProvider,
+  RouterProvider,
+  ThemeProvider,
+} from "./providers";
 
 export const App = () => {
-  const [mockId, setMockId] = useState<string | undefined>();
-  const [activeNav, setActiveNav] = useState<NavType>("add-mock");
-
-  const handleEditMock = (mock: MockData) => {
-    setMockId(mock.id);
-    setActiveNav("add-mock");
-  };
-
-  const handleCancelEdit = () => {
-    setMockId(undefined);
-  };
-
-  const renderContent = () => {
-    if (activeNav === "add-mock") {
-      return <AddMock mockId={mockId} onCancelEdit={handleCancelEdit} />;
-    } else if (activeNav === "mock-list") {
-      return <MockList onEditMock={handleEditMock} />;
-    } else if (activeNav === "settings") {
-      return <Settings />;
-    }
-  };
-
   return (
     <ThemeProvider>
-      <MockProvider>
-        <Layout>
-          <Flex justify="center" style={{ marginBottom: "15px" }}>
-            <Navigation activeNav={activeNav} onNavChange={setActiveNav} />
-          </Flex>
-          {renderContent()}
-        </Layout>
-      </MockProvider>
+      <ExtensionApiProvider>
+        <RouterProvider />
+      </ExtensionApiProvider>
     </ThemeProvider>
   );
 };
