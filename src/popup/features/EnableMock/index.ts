@@ -1,1 +1,1 @@
-export { Switch as EnableMockSwitch } from "./ui/Switch";
+export { EnableSwitch as EnableMockSwitch } from "./ui/EnableSwitch";

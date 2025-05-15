@@ -1,9 +1,9 @@
 import { Layout as AntLayout } from "antd";
-import { useTheme } from "../../../hooks/useTheme";
 import { FC, ReactNode } from "react";
-import { Navigation } from "shared/ui/Navigation/Navigation";
+import { NavigationBar } from "shared/ui/Navigation";
 import { NavType } from "../../../../types";
 import { useLocation } from "react-router-dom";
+import { theme } from "antd";
 
 type Props = {
   children: ReactNode;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const PageLayout: FC<Props> = ({ children }) => {
-  const { isDarkMode } = useTheme();
+  const { token } = theme.useToken();
   const location = useLocation();
 
   const navMapping: Record<string, NavType> = {
@@ -23,10 +23,14 @@ export const PageLayout: FC<Props> = ({ children }) => {
 
   return (
     <AntLayout
-      style={{ padding: "10px" }}
-      className={isDarkMode ? "dark-theme" : "light-theme"}
+      style={{
+        padding: "10px",
+        width: "100%",
+        height: "100%",
+        backgroundColor: token.colorBgContainer,
+      }}
     >
-      <Navigation activeNav={navMapping[location.pathname] || "add-mock"} />
+      <NavigationBar activeNav={navMapping[location.pathname] || "add-mock"} />
       {children}
     </AntLayout>
   );

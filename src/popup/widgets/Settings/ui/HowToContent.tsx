@@ -1,6 +1,6 @@
 import { Card, Space, Typography } from "antd";
 
-export const SettingsHowTo = () => {
+export const HowToContent = () => {
   return (
     <Card title="How to use">
       <Space direction="vertical">

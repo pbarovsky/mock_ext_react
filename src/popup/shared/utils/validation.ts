@@ -1,4 +1,4 @@
-import { MESSAGES } from "../utils/constants";
+import { MESSAGES } from "./constants";
 
 export const validateJSON = (_: unknown, value: string) => {
   try {

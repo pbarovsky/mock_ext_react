@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Form, Input, Button } from "antd";
-import { MockData, Status } from "../../types";
-import { StatusTag } from "./StatusTag";
-import { urlRules, responseRules } from "../utils/validation";
-import { formattedJson } from "../utils/jsonUtils";
+import { Form as AntForm, Input, Button } from "antd";
+import { MockData, Status } from "../../../../types";
+import { StatusTag } from "shared/ui/Status";
+import { urlRules, responseRules } from "../../../shared/utils/validation";
+import { formattedJson } from "shared/utils/jsonUtils";
 
 interface MockFormProps {
   initialValues?: MockData;
@@ -16,7 +16,7 @@ interface MockFormProps {
   setStatus: (status: Status) => void;
 }
 
-export const MockForm = ({
+export const Form = ({
   initialValues,
   onSubmit,
   onCancel,
@@ -26,7 +26,7 @@ export const MockForm = ({
   status,
   setStatus,
 }: MockFormProps) => {
-  const [form] = Form.useForm<{ url: string; response: string }>();
+  const [form] = AntForm.useForm<{ url: string; response: string }>();
   const [formValues, setFormValues] = useState<{
     url: string;
     response: string;
@@ -69,22 +69,22 @@ export const MockForm = ({
   };
 
   return (
-    <Form
+    <AntForm
       form={form}
       layout="vertical"
       onFinish={handleSubmit}
       initialValues={formValues}
     >
-      <Form.Item name="url" label="URL" rules={urlRules}>
+      <AntForm.Item name="url" label="URL" rules={urlRules}>
         <Input placeholder="https://mockapi.com/data" />
-      </Form.Item>
-      <Form.Item label="Response" name="response" rules={responseRules}>
+      </AntForm.Item>
+      <AntForm.Item label="Response" name="response" rules={responseRules}>
         <Input.TextArea
           rows={5}
           placeholder='{"content": "mocked data", "data": {}}'
         />
-      </Form.Item>
-      <Form.Item>
+      </AntForm.Item>
+      <AntForm.Item>
         <Button type="primary" htmlType="submit" loading={isSubmitting}>
           {isEditing ? "Update" : "Add"} Mock
         </Button>
@@ -93,8 +93,8 @@ export const MockForm = ({
             Cancel
           </Button>
         )}
-      </Form.Item>
+      </AntForm.Item>
       {status.type && <StatusTag {...status} />}
-    </Form>
+    </AntForm>
   );
 };

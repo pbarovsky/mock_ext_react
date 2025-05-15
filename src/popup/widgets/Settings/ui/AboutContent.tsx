@@ -5,7 +5,7 @@ import {
 } from "@ant-design/icons";
 import { Space, Typography, Card } from "antd";
 
-export const SettingAbout = () => {
+export const AboutContent = () => {
   return (
     <Card>
       <Space direction="vertical">

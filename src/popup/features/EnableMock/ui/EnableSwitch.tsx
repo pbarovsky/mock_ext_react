@@ -1,21 +1,22 @@
-import { Switch as AntSwitch } from "antd";
 import { FC } from "react";
 import { MockData } from "../../../../types";
 import { useMock } from "../../../hooks/useMock";
+import { Switch } from "shared/ui/Switch";
 
 type Props = {
   isActive: boolean;
   record: MockData;
 };
 
-export const Switch: FC<Props> = ({ isActive, record }) => {
+export const EnableSwitch: FC<Props> = ({ isActive, record }) => {
   const { toggleMock } = useMock();
 
   return (
-    <AntSwitch
+    <Switch
       checked={isActive}
+      onChange={toggleMock}
       size="small"
-      onChange={() => toggleMock(record.id)}
+      value={record.id}
     />
   );
 };

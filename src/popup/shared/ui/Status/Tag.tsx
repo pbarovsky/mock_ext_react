@@ -1,9 +1,9 @@
-import { Tag } from "antd";
+import { Tag as AntTag } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import { Status } from "../../types";
-import { MESSAGES } from "../utils/constants";
+import { Status } from "../../../../types";
+import { MESSAGES } from "../../utils/constants";
 
-export const StatusTag = ({ type, message }: Status) => {
+export const Tag = ({ type, message }: Status) => {
   const getStatusConfig = () => {
     if (type === "success") {
       return { color: "green", text: message, icon: <CheckCircleOutlined /> };
@@ -16,8 +16,8 @@ export const StatusTag = ({ type, message }: Status) => {
   const { color, text, icon } = getStatusConfig();
 
   return (
-    <Tag style={{ padding: "8px" }} color={color} icon={icon}>
+    <AntTag style={{ padding: "8px" }} color={color} icon={icon}>
       {text}
-    </Tag>
+    </AntTag>
   );
 };

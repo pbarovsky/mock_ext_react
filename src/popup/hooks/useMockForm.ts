@@ -1,7 +1,7 @@
 import { useMock } from "./useMock";
 import { useState } from "react";
-import { createMockData } from "../utils/createMockData";
-import { MESSAGES } from "../utils/constants";
+import { createMockData } from "shared/utils/createMockData";
+import { MESSAGES } from "shared/utils/constants";
 
 export const useMockForm = (mockId?: string) => {
   const { mocks, addMock, updateMock, status, setStatus } = useMock();

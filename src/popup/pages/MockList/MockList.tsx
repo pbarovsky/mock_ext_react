@@ -1,5 +1,5 @@
 import { PageLayout } from "widgets/PageLayout";
-import { MockListTable } from "widgets/PageLayout/Table";
+import { MockListTable } from "widgets/Table";
 
 export const Page = () => {
   return (

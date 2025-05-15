@@ -1,8 +1,6 @@
 import { Space } from "antd";
-import { SettingAbout } from "../../components/SettingAbout";
-import { SettingsHowTo } from "../../components/SettingsHowTo";
-import { SettingsTheme } from "../../components/SettingsTheme";
 import { PageLayout } from "widgets/PageLayout";
+import { SettingAbout, SettingsHowTo, SettingsTheme } from "widgets/Settings";
 
 export const Page = () => {
   return (

@@ -1,7 +1,7 @@
 export const cleanedJson = (response: string): string => {
   try {
     return JSON.stringify(JSON.parse(response));
-  } catch (e) {
+  } catch {
     return response.trim();
   }
 };

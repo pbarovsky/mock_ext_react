@@ -1,12 +1,12 @@
-import type { AlignType } from "rc-table/lib/interface";
 import { Table as AntTable, Space } from "antd";
-import { useMock } from "../../../../hooks/useMock";
-import { MockData } from "../../../../../types";
-import { Hint } from "../../../../components/Hint";
+import { Hint } from "shared/ui/Hint";
 import { EditMockButton } from "features/EditMock";
 import { DeleteMockButton } from "features/DeleteMock";
 import { ComfirmDeleteMock } from "features/ComfirmDelete";
 import { EnableMockSwitch } from "features/EnableMock";
+import type { AlignType } from "rc-table/lib/interface";
+import { useMock } from "../../../hooks/useMock";
+import { MockData } from "../../../../types";
 
 export const Table = () => {
   const { mocks } = useMock();
