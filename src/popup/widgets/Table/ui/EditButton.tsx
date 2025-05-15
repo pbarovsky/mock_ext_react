@@ -2,7 +2,7 @@ import { EditOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { FC } from "react";
-import { MockData } from "@shared/lib/types";
+import { MockData } from "@types";
 
 export const EditButton: FC<{ record: MockData }> = ({ record }) => {
   const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import type { AlignType } from "rc-table/lib/interface";
 import { Table as AntTable, Space } from "antd";
-import { EditMockButton } from "@features/EditMock";
+import { EditButton } from "./EditButton";
 import { ComfirmDeleteMock } from "@features/ComfirmDeleteMock";
 import { EnableMockSwitch } from "@features/EnableMock";
 import { Hint } from "@shared/ui/Hint";
@@ -44,7 +44,7 @@ export const Table = () => {
       align: "center" as AlignType,
       render: (_: unknown, record: MockData) => (
         <Space>
-          <EditMockButton record={record} />
+          <EditButton record={record} />
           <ComfirmDeleteMock record={record} />
         </Space>
       ),
