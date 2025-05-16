@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Mock daAPIta extension",
+  "name": "Mock API extension",
   "version": "1.0.0",
   "description": "Chrome extension",
   "action": {
