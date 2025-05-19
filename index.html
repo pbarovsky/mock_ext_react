@@ -9,11 +9,18 @@
         padding: 0;
       }
       #app {
-        width: 700px;
-        height: 550px;
+        width: 400px;
+        height: 570px;
         margin: 0;
         overflow: hidden;
         padding: 0;
+      }
+      .scrollable {
+        overflow-y: auto;
+        max-height: calc(100vh - 150px);
+      }
+      .scrollable::-webkit-scrollbar {
+        display: none;
       }
     </style>
   </head>

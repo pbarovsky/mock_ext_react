@@ -7,7 +7,11 @@ import { formattedJson } from "@shared/utils/jsonUtils";
 
 interface MockFormProps {
   initialValues?: MockData;
-  onSubmit: (values: { url: string; response: string }) => Promise<boolean>;
+  onSubmit: (values: {
+    name: string;
+    url: string;
+    response: string;
+  }) => Promise<boolean>;
   onCancel?: () => void;
   isSubmitting: boolean;
   isEditing: boolean;
@@ -26,11 +30,17 @@ export const Form = ({
   status,
   setStatus,
 }: MockFormProps) => {
-  const [form] = AntForm.useForm<{ url: string; response: string }>();
+  const [form] = AntForm.useForm<{
+    name: string;
+    url: string;
+    response: string;
+  }>();
   const [formValues, setFormValues] = useState<{
+    name: string;
     url: string;
     response: string;
   }>({
+    name: initialValues?.name || "",
     url: initialValues?.url || "",
     response: formattedJson(initialValues?.response || ""),
   });
@@ -38,6 +48,7 @@ export const Form = ({
   useEffect(() => {
     if (initialValues) {
       setFormValues({
+        name: initialValues.name,
         url: initialValues.url,
         response: formattedJson(initialValues.response || ""),
       });
@@ -51,19 +62,23 @@ export const Form = ({
     }
   }, [status, setStatus]);
 
-  const handleSubmit = async (values: { url: string; response: string }) => {
+  const handleSubmit = async (values: {
+    name: string;
+    url: string;
+    response: string;
+  }) => {
     const success = await onSubmit(values);
 
     if (success) {
-      setFormValues({ url: "", response: "" });
-      form.setFieldsValue({ url: "", response: "" });
+      setFormValues({ name: "", url: "", response: "" });
+      form.setFieldsValue({ name: "", url: "", response: "" });
       setIsEditing(false);
     }
   };
 
   const handleCancel = () => {
-    setFormValues({ url: "", response: "" });
-    form.setFieldsValue({ url: "", response: "" });
+    setFormValues({ name: "", url: "", response: "" });
+    form.setFieldsValue({ name: "", url: "", response: "" });
     setIsEditing(false);
     onCancel?.();
   };
@@ -75,6 +90,15 @@ export const Form = ({
       onFinish={handleSubmit}
       initialValues={formValues}
     >
+      <AntForm.Item
+        name="name"
+        label="Name"
+        rules={[
+          { required: true, message: "Please enter a name for the mock" },
+        ]}
+      >
+        <Input placeholder="Enter mock name" />
+      </AntForm.Item>
       <AntForm.Item name="url" label="URL" rules={urlRules}>
         <Input placeholder="https://mockapi.com/data" />
       </AntForm.Item>

@@ -17,7 +17,7 @@ export const Builder = () => {
   };
 
   return (
-    <Card title={isEditing ? "Edit mock" : "Add new mock"}>
+    <Card size="small" title={isEditing ? "Edit mock" : "Add new mock"}>
       <Form
         initialValues={editingMock}
         onSubmit={handleSubmit}

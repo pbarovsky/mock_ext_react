@@ -7,13 +7,13 @@ import { Space, Typography, Card } from "antd";
 
 export const AboutContent = () => {
   return (
-    <Card>
+    <Card size="small">
       <Space direction="vertical">
         <Space direction="horizontal">
           <Typography.Text>Mock API Extension</Typography.Text>
           <Typography.Text type="secondary">Version 1.0.0</Typography.Text>
         </Space>
-        <Space direction="horizontal">
+        <Space direction="vertical">
           <Space>
             <MailOutlined />
             <Typography.Text>Email: pbarovsky@mail.ru</Typography.Text>

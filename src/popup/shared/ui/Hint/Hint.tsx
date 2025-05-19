@@ -1,9 +1,10 @@
-import { CSSProperties } from "react";
+import React, { CSSProperties, ReactNode } from "react";
 import { Tooltip } from "antd";
 import { formattedJson } from "@shared/utils/jsonUtils";
 
 interface HintProps {
   text: string;
+  children: ReactNode;
 }
 
 const HintStyles: CSSProperties = {
@@ -13,10 +14,10 @@ const HintStyles: CSSProperties = {
   fontSize: "12px",
 };
 
-export const Hint = ({ text }: HintProps) => {
+export const Hint = ({ text, children }: HintProps) => {
   return (
     <Tooltip title={<pre style={HintStyles}>{formattedJson(text)}</pre>}>
-      {text}
+      {children}
     </Tooltip>
   );
 };

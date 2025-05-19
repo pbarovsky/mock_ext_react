@@ -5,7 +5,7 @@ import { useTheme } from "@shared/lib/theme/useTheme";
 export const ThemeContent = () => {
   const { toggleTheme, isDarkMode } = useTheme();
   return (
-    <Card title="Theme">
+    <Card size="small" title="Theme">
       <Flex align="center" justify="space-between">
         <Typography.Text>Dark Theme</Typography.Text>
         <Switch

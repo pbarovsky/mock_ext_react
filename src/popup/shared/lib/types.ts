@@ -7,6 +7,7 @@ export interface Theme {
 
 export interface MockData {
   id: string;
+  name: string;
   url: string;
   response: string;
   isActive: boolean;
