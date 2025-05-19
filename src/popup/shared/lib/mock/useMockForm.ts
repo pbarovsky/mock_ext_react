@@ -11,9 +11,27 @@ export const useMockForm = (mockId?: string) => {
     ? mocks.find((mock) => mock.id === mockId)
     : undefined;
 
-  const handleSubmit = async (values: { url: string; response: string }) => {
+  const handleSubmit = async (values: {
+    name: string;
+    url: string;
+    response: string;
+  }) => {
     try {
       setIsSubmitting(true);
+
+      // Check for duplicate names
+      const isNameDuplicate = mocks.some(
+        (mock) => mock.name === values.name && mock.id !== mockId
+      );
+
+      if (isNameDuplicate) {
+        setStatus({
+          type: "error",
+          message: "A mock with this name already exists",
+        });
+        return false;
+      }
+
       const mockData = createMockData(values, editingMock);
 
       if (editingMock) {

@@ -27,3 +27,5 @@ export interface MockContextType {
   status: Status;
   setStatus: (status: Status) => void;
 }
+
+export type ViewType = "list" | "table";

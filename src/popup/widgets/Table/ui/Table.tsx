@@ -1,5 +1,5 @@
 import type { AlignType } from "rc-table/lib/interface";
-import { Table as AntTable, Space } from "antd";
+import { Table as AntTable, Space, Tag } from "antd";
 import { EditButton } from "./EditButton";
 import { ComfirmDeleteMock } from "@features/ComfirmDeleteMock";
 import { EnableMockSwitch } from "@features/EnableMock";
@@ -12,23 +12,46 @@ export const Table = () => {
 
   const columns = [
     {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      width: "25%",
+      align: "center" as AlignType,
+      ellipsis: true,
+      render: (text: string) => (
+        <Hint text={text}>
+          <strong>{text}</strong>
+        </Hint>
+      ),
+    },
+    {
       title: "URL",
       dataIndex: "url",
       key: "url",
-      width: "35%",
+      width: "15%",
+      align: "center" as AlignType,
       ellipsis: true,
-      render: (text: string) => <Hint text={text} />,
+      render: (text: string) => (
+        <Hint text={text}>
+          <Tag color="blue">URL</Tag>
+        </Hint>
+      ),
     },
     {
       title: "Response",
       dataIndex: "response",
       key: "response",
-      width: "35%",
+      width: "15%",
+      align: "center" as AlignType,
       ellipsis: true,
-      render: (text: string) => <Hint text={text} />,
+      render: (text: string) => (
+        <Hint text={text}>
+          <Tag color="green">JSON</Tag>
+        </Hint>
+      ),
     },
     {
-      title: "De/Activate",
+      title: "On/off",
       dataIndex: "isActive",
       key: "isActive",
       width: "15%",
@@ -40,7 +63,7 @@ export const Table = () => {
     {
       title: "Actions",
       key: "actions",
-      width: "15%",
+      width: "20%",
       align: "center" as AlignType,
       render: (_: unknown, record: MockData) => (
         <Space>
@@ -53,6 +76,7 @@ export const Table = () => {
 
   return (
     <AntTable
+      title={() => "Saved Mocks"}
       dataSource={mocks}
       columns={columns}
       rowKey="id"

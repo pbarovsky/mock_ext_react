@@ -1,1 +1,1 @@
-export {Table as MockListTable} from "./ui/Table";
+export { Table as MockTable } from "./ui/Table";

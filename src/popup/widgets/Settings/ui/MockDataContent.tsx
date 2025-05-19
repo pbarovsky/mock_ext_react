@@ -1,9 +1,13 @@
-import { Card, Space, Button, message } from "antd";
+import { Card, Space, Button, message, Modal, Upload } from "antd";
 import { DownloadOutlined, UploadOutlined } from "@ant-design/icons";
 import { useMock } from "@shared/lib/mock/useMock";
+import { useState } from "react";
+import type { UploadFile } from "antd/es/upload/interface";
 
 export const MockDataContent = () => {
   const { mocks } = useMock();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
 
   const handleExport = () => {
     try {
@@ -18,60 +22,88 @@ export const MockDataContent = () => {
       linkElement.click();
 
       message.success("Mocks exported successfully");
-    } catch {
+    } catch (err) {
+      console.error("Export error:", err);
       message.error("Failed to export mocks");
     }
   };
 
   const handleImport = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = ".json";
+    setIsModalOpen(true);
+  };
 
-    input.onchange = (e) => {
-      const file = (e.target as HTMLInputElement).files?.[0];
-      if (!file) return;
+  const handleModalOk = () => {
+    const file = fileList[0]?.originFileObj;
+    if (!file) {
+      message.error("Please select a file first");
+      return;
+    }
 
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        try {
-          const content = event.target?.result as string;
-          const importedMocks = JSON.parse(content);
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const content = event.target?.result as string;
+        const importedMocks = JSON.parse(content);
 
-          // Validate imported data
-          if (!Array.isArray(importedMocks)) {
-            throw new Error("Invalid format: expected an array of mocks");
-          }
-
-          // Store imported mocks
-          if (typeof chrome !== "undefined" && chrome.storage) {
-            chrome.storage.local.set({ mocks: importedMocks }, () => {
-              message.success("Mocks imported successfully");
-              // Reload the page to reflect changes
-              window.location.reload();
-            });
-          }
-        } catch (err) {
-          console.error("Import error:", err);
-          message.error("Failed to import mocks: Invalid file format");
+        // Validate imported data
+        if (!Array.isArray(importedMocks)) {
+          throw new Error("Invalid format: expected an array of mocks");
         }
-      };
-      reader.readAsText(file);
-    };
 
-    input.click();
+        // Store imported mocks
+        if (typeof chrome !== "undefined" && chrome.storage) {
+          chrome.storage.local.set({ mocks: importedMocks }, () => {
+            message.success("Mocks imported successfully");
+            setIsModalOpen(false);
+            setFileList([]);
+            // Reload the page to reflect changes
+            window.location.reload();
+          });
+        }
+      } catch (err) {
+        console.error("Import error:", err);
+        message.error("Failed to import mocks: Invalid file format");
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  const handleModalCancel = () => {
+    setIsModalOpen(false);
+    setFileList([]);
   };
 
   return (
-    <Card size="small" title="Mock Data Management">
-      <Space>
-        <Button icon={<DownloadOutlined />} onClick={handleExport}>
-          Export Mocks
-        </Button>
-        <Button icon={<UploadOutlined />} onClick={handleImport}>
-          Import Mocks
-        </Button>
-      </Space>
-    </Card>
+    <>
+      <Card size="small" title="Mock Data Management">
+        <Space>
+          <Button icon={<DownloadOutlined />} onClick={handleExport}>
+            Export Mocks
+          </Button>
+          <Button icon={<UploadOutlined />} onClick={handleImport}>
+            Import Mocks
+          </Button>
+        </Space>
+      </Card>
+
+      <Modal
+        title="Import Mocks"
+        open={isModalOpen}
+        onOk={handleModalOk}
+        onCancel={handleModalCancel}
+        okText="Import"
+        cancelText="Cancel"
+      >
+        <Upload
+          accept=".json"
+          maxCount={1}
+          fileList={fileList}
+          onChange={({ fileList }) => setFileList(fileList)}
+          beforeUpload={() => false}
+        >
+          <Button icon={<UploadOutlined />}>Select JSON File</Button>
+        </Upload>
+      </Modal>
+    </>
   );
 };

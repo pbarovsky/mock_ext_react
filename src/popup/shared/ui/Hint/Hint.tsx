@@ -4,7 +4,7 @@ import { formattedJson } from "@shared/utils/jsonUtils";
 
 interface HintProps {
   text: string;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const HintStyles: CSSProperties = {
