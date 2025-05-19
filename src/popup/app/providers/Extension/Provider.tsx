@@ -102,6 +102,8 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
     toggleMock,
     status,
     setStatus,
+    saveMocks,
+    setMocks,
   };
 
   return <MockContext.Provider value={value}>{children}</MockContext.Provider>;

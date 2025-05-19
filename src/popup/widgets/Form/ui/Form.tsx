@@ -5,7 +5,7 @@ import { urlRules, responseRules } from "@shared/utils/validation";
 import { MockData, Status } from "../../../shared/lib/types";
 import { formattedJson } from "@shared/utils/jsonUtils";
 
-interface MockFormProps {
+interface Props {
   initialValues?: MockData;
   onSubmit: (values: {
     name: string;
@@ -29,12 +29,13 @@ export const Form = ({
   setIsEditing,
   status,
   setStatus,
-}: MockFormProps) => {
+}: Props) => {
   const [form] = AntForm.useForm<{
     name: string;
     url: string;
     response: string;
   }>();
+
   const [formValues, setFormValues] = useState<{
     name: string;
     url: string;

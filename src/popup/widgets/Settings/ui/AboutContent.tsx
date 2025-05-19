@@ -16,11 +16,11 @@ export const AboutContent = () => {
         <Space direction="vertical">
           <Space>
             <MailOutlined />
-            <Typography.Text>Email: pbarovsky@mail.ru</Typography.Text>
+            <Typography.Text>pbarovsky@mail.ru</Typography.Text>
           </Space>
           <Space>
             <MessageOutlined />
-            <Typography.Text>Telegram: @pbarovsky</Typography.Text>
+            <Typography.Text>@pbarovsky</Typography.Text>
           </Space>
           <Space>
             <GithubOutlined />

@@ -26,6 +26,8 @@ export interface MockContextType {
   toggleMock: (id: string) => Promise<void>;
   status: Status;
   setStatus: (status: Status) => void;
+  saveMocks: (mocks: MockData[]) => Promise<void>;
+  setMocks: (mocks: MockData[]) => void;
 }
 
 export type ViewType = "list" | "table";

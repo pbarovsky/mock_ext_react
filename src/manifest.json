@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "description": "Chrome extension",
   "action": {
-    "default_popup": "index.html",
     "default_title": "Mock API extension",
     "default_icon": "assets/logo/icon_38.png"
   },

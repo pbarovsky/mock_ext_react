@@ -36,3 +36,14 @@ chrome.storage.local.get(["mocks"], (result) => {
 chrome.storage.onChanged.addListener((changes) => {
   if (changes.mocks) updateMockRules(changes.mocks.newValue || []);
 });
+
+chrome.action.onClicked.addListener(() => {
+  chrome.windows.create({
+    url: "./index.html",
+    type: "popup",
+    state: "normal",
+    focused: false,
+    width: 550,
+    height: 600,
+  });
+});

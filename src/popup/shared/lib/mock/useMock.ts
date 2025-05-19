@@ -17,5 +17,7 @@ export const useMock = (): MockContextType => {
     toggleMock: context.toggleMock,
     status: context.status,
     setStatus: context.setStatus,
+    saveMocks: context.saveMocks,
+    setMocks: context.setMocks,
   };
 };

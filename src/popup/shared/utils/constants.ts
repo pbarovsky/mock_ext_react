@@ -10,4 +10,10 @@ export const MESSAGES = {
   RESPONSE_INVALID: "Please enter a valid JSON response",
   MOCK_EXIST: "A mock with this URL already exists!",
   EDIT_MOCK_EXIST: "Another mock is already using this URL!",
+  SUCCESS_EXPORT: "Mocks exported successfully",
+  FAILED_EXPORT: "Failed to export mocks",
+  SUCCESS_IMPORT: "Mocks imported successfully",
+  FAILED_IMPORT: "Failed to import mocks",
+  FAILED_INVALID_IMPORT: "Failed to import: Invalid file format",
+  MESSAGE_DUPLICATE_MOCK: "At least one similar mock already exists.",
 } as const;
