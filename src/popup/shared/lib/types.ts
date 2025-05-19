@@ -29,3 +29,12 @@ export interface MockContextType {
 }
 
 export type ViewType = "list" | "table";
+
+export interface MockUIItem {
+  id: string;
+  renderName: React.ReactNode;
+  renderURL: React.ReactNode;
+  renderResponse: React.ReactNode;
+  renderSwitch: React.ReactNode;
+  renderActions: React.ReactNode;
+}
