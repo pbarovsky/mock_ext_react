@@ -61,7 +61,7 @@ export const Form = ({
       const timer = setTimeout(() => setStatus({ type: null }), 3000);
       return () => clearTimeout(timer);
     }
-  }, [status, setStatus]);
+  }, [status]);
 
   const handleSubmit = async (values: {
     name: string;

@@ -1,6 +1,6 @@
 import type { UploadFile } from "antd/es/upload/interface";
 import { useState, useEffect, useCallback } from "react";
-import { MockData } from "@shared/lib/types";
+import { MockData, Status } from "@shared/lib/types";
 import { cleanedJson } from "@shared/utils/jsonUtils";
 import { Card, Space, Button, Modal, Upload, Flex } from "antd";
 import { DownloadOutlined, UploadOutlined } from "@ant-design/icons";
@@ -9,16 +9,21 @@ import { useMock } from "@shared/lib/mock/useMock";
 import { MESSAGES } from "@shared/utils/constants";
 
 export const ImportExportContent = () => {
-  const { mocks, saveMocks, setMocks, status, setStatus } = useMock();
+  const { mocks, saveMocks, setMocks } = useMock();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [fileList, setFileList] = useState<UploadFile[]>([]);
 
+  const [localStatus, setLocalStatus] = useState<Status>({
+    type: null,
+    message: "",
+  });
+
   useEffect(() => {
-    if (status.type) {
-      const timer = setTimeout(() => setStatus({ type: null }), 3000);
+    if (localStatus.type) {
+      const timer = setTimeout(() => setLocalStatus({ type: null }), 3000);
       return () => clearTimeout(timer);
     }
-  }, [status, setStatus]);
+  }, [localStatus]);
 
   const handleExport = useCallback(() => {
     try {
@@ -31,11 +36,11 @@ export const ImportExportContent = () => {
       link.download = exportFileName;
       link.click();
 
-      setStatus({ type: "success", message: MESSAGES.SUCCESS_EXPORT });
+      setLocalStatus({ type: "success", message: MESSAGES.SUCCESS_EXPORT });
     } catch {
-      setStatus({ type: "error", message: MESSAGES.FAILED_EXPORT });
+      setLocalStatus({ type: "error", message: MESSAGES.FAILED_EXPORT });
     }
-  }, [mocks, setStatus]);
+  }, [mocks, setLocalStatus]);
 
   const processImport = useCallback(
     (content: string) => {
@@ -57,7 +62,7 @@ export const ImportExportContent = () => {
           );
 
           if (hasDuplicate) {
-            setStatus({
+            setLocalStatus({
               type: "error",
               message: MESSAGES.MESSAGE_DUPLICATE_MOCK,
             });
@@ -69,21 +74,24 @@ export const ImportExportContent = () => {
           const updatedMocks = [...existingMocks, ...importedMocks];
           setMocks(updatedMocks);
           saveMocks(updatedMocks);
-          setStatus({ type: "success", message: MESSAGES.SUCCESS_IMPORT });
+          setLocalStatus({ type: "success", message: MESSAGES.SUCCESS_IMPORT });
           setFileList([]);
           setIsModalOpen(false);
         });
       } catch {
-        setStatus({ type: "error", message: MESSAGES.FAILED_INVALID_IMPORT });
+        setLocalStatus({
+          type: "error",
+          message: MESSAGES.FAILED_INVALID_IMPORT,
+        });
       }
     },
-    [mocks, setMocks, saveMocks, setStatus]
+    [mocks, setMocks, saveMocks, setLocalStatus]
   );
 
   const handleModalOk = useCallback(() => {
     const file = fileList[0]?.originFileObj;
     if (!file)
-      return setStatus({
+      return setLocalStatus({
         type: "error",
         message: MESSAGES.FAILED_INVALID_IMPORT,
       });
@@ -104,9 +112,9 @@ export const ImportExportContent = () => {
         </Button>
       </Space>
 
-      {status.type && (
+      {localStatus.type && (
         <Flex vertical style={{ marginTop: "8px", width: "max-content" }}>
-          <StatusTag {...status} />
+          <StatusTag {...localStatus} />
         </Flex>
       )}
 
