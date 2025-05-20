@@ -1,4 +1,4 @@
-export type NavType = "add-mock" | "list" | "settings";
+export type NavType = "add-mock" | "saved" | "settings";
 
 export interface Theme {
   isDarkMode: boolean;

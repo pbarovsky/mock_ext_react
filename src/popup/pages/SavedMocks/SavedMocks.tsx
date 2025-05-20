@@ -3,7 +3,7 @@ import { SavedMocksWidget } from "@widgets/SavedMocks";
 
 export const Page = () => {
   return (
-    <PageLayout activeNav="list">
+    <PageLayout activeNav="saved">
       <SavedMocksWidget />
     </PageLayout>
   );

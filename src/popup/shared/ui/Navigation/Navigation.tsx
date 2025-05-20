@@ -14,16 +14,16 @@ interface Props {
 
 const options = [
   {
-    label: "Add Mock",
+    label: "Add mock",
     value: "add-mock",
     icon: <PlusCircleOutlined />,
     path: "/",
   },
   {
-    label: "List of Mocks",
-    value: "list",
+    label: "Saved mocks",
+    value: "saved",
     icon: <UnorderedListOutlined />,
-    path: "/list",
+    path: "/saved",
   },
   {
     label: "Settings",

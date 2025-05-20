@@ -13,7 +13,7 @@ const router = createMemoryRouter([
     element: <AddMockPage />,
   },
   {
-    path: "/list",
+    path: "/saved",
     element: <SavedMocksPage />,
   },
   {

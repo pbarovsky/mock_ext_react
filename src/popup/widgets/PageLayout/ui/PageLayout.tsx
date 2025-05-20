@@ -16,7 +16,7 @@ export const PageLayout: FC<Props> = ({ children }) => {
 
   const navMapping: Record<string, NavType> = {
     "/": "add-mock",
-    "/list": "list",
+    "/saved": "saved",
     "/settings": "settings",
   };
 

@@ -93,13 +93,13 @@ yarn build
 </p>
 
 <p align="center">
-  <img src="./images/2.png" alt="Список моков (список)"/>
-  <br>Saved mocks (list variant)
+  <img src="./images/2.png" alt="Список моков (table)"/>
+  <br>Saved mocks (table variant)
 </p>
 
 <p align="center">
-  <img src="./images/3.png" alt="Список моков (таблица)"/>
-  <br>Saved mocks (table variant)
+  <img src="./images/3.png" alt="Список моков (list)"/>
+  <br>Saved mocks (list variant)
 </p>
 
 <p align="center">
