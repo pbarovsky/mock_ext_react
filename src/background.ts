@@ -45,5 +45,7 @@ chrome.action.onClicked.addListener(() => {
     focused: false,
     width: 550,
     height: 600,
+    top: 100,
+    left: 100,
   });
 });
