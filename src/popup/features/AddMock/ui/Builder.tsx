@@ -13,7 +13,7 @@ export const Builder = () => {
     useMockForm(mockId);
 
   const handleCancel = () => {
-    navigate("/list");
+    navigate("/saved");
   };
 
   return (

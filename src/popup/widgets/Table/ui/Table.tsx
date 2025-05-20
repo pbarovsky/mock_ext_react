@@ -1,5 +1,5 @@
 import { MockUIItem } from "@shared/lib/types";
-import { Table as AntTable, Card } from "antd";
+import { Table as AntTable } from "antd";
 import type { AlignType } from "rc-table/lib/interface";
 
 type Props = {

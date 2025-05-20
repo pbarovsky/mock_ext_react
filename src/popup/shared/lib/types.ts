@@ -20,7 +20,6 @@ export interface Status {
 
 export interface MockContextType {
   mocks: MockData[];
-  // addMock: (mock: MockData) => Promise<void>;
   addMock: (mock: MockData) => Promise<boolean>;
   updateMock: (mock: MockData) => Promise<boolean>;
   deleteMock: (id: string) => Promise<void>;

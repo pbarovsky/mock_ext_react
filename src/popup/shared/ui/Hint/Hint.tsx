@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { Tooltip } from "antd";
 import { formattedJson } from "@shared/utils/jsonUtils";
 
