@@ -4,10 +4,15 @@ import { StatusTag } from "@shared/ui/Status";
 import { urlRules, responseRules } from "@shared/utils/validation";
 import { MockData, Status } from "../../../shared/lib/types";
 import { formattedJson } from "@shared/utils/jsonUtils";
+import { TextArea } from "@shared/ui/TextArea";
 
-interface MockFormProps {
+interface Props {
   initialValues?: MockData;
-  onSubmit: (values: { url: string; response: string }) => Promise<boolean>;
+  onSubmit: (values: {
+    name: string;
+    url: string;
+    response: string;
+  }) => Promise<boolean>;
   onCancel?: () => void;
   isSubmitting: boolean;
   isEditing: boolean;
@@ -25,12 +30,19 @@ export const Form = ({
   setIsEditing,
   status,
   setStatus,
-}: MockFormProps) => {
-  const [form] = AntForm.useForm<{ url: string; response: string }>();
+}: Props) => {
+  const [form] = AntForm.useForm<{
+    name: string;
+    url: string;
+    response: string;
+  }>();
+
   const [formValues, setFormValues] = useState<{
+    name: string;
     url: string;
     response: string;
   }>({
+    name: initialValues?.name || "",
     url: initialValues?.url || "",
     response: formattedJson(initialValues?.response || ""),
   });
@@ -38,6 +50,7 @@ export const Form = ({
   useEffect(() => {
     if (initialValues) {
       setFormValues({
+        name: initialValues.name,
         url: initialValues.url,
         response: formattedJson(initialValues.response || ""),
       });
@@ -49,21 +62,25 @@ export const Form = ({
       const timer = setTimeout(() => setStatus({ type: null }), 3000);
       return () => clearTimeout(timer);
     }
-  }, [status, setStatus]);
+  }, [status]);
 
-  const handleSubmit = async (values: { url: string; response: string }) => {
+  const handleSubmit = async (values: {
+    name: string;
+    url: string;
+    response: string;
+  }) => {
     const success = await onSubmit(values);
 
     if (success) {
-      setFormValues({ url: "", response: "" });
-      form.setFieldsValue({ url: "", response: "" });
+      setFormValues({ name: "", url: "", response: "" });
+      form.setFieldsValue({ name: "", url: "", response: "" });
       setIsEditing(false);
     }
   };
 
   const handleCancel = () => {
-    setFormValues({ url: "", response: "" });
-    form.setFieldsValue({ url: "", response: "" });
+    setFormValues({ name: "", url: "", response: "" });
+    form.setFieldsValue({ name: "", url: "", response: "" });
     setIsEditing(false);
     onCancel?.();
   };
@@ -75,13 +92,24 @@ export const Form = ({
       onFinish={handleSubmit}
       initialValues={formValues}
     >
+      <AntForm.Item
+        name="name"
+        label="Name"
+        rules={[
+          { required: true, message: "Please enter a name for the mock" },
+        ]}
+      >
+        <Input placeholder="Enter mock name" />
+      </AntForm.Item>
       <AntForm.Item name="url" label="URL" rules={urlRules}>
         <Input placeholder="https://mockapi.com/data" />
       </AntForm.Item>
       <AntForm.Item label="Response" name="response" rules={responseRules}>
-        <Input.TextArea
-          rows={5}
-          placeholder='{"content": "mocked data", "data": {}}'
+        <TextArea
+          value={formValues.response}
+          onChange={(value) =>
+            setFormValues((prev) => ({ ...prev, response: value }))
+          }
         />
       </AntForm.Item>
       <AntForm.Item>

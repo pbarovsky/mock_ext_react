@@ -2,7 +2,7 @@ import { Card, Space, Typography } from "antd";
 
 export const HowToContent = () => {
   return (
-    <Card title="How to use">
+    <Card size="small" title="How to use">
       <Space direction="vertical">
         <Typography.Text>
           1. Add a mock by specifying the URL and JSON response

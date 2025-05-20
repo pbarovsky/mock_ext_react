@@ -1,64 +1,62 @@
+import { MockUIItem } from "@shared/lib/types";
+import { Table as AntTable, Card } from "antd";
 import type { AlignType } from "rc-table/lib/interface";
-import { Table as AntTable, Space } from "antd";
-import { EditButton } from "./EditButton";
-import { ComfirmDeleteMock } from "@features/ComfirmDeleteMock";
-import { EnableMockSwitch } from "@features/EnableMock";
-import { Hint } from "@shared/ui/Hint";
-import { useMock } from "@shared/lib/mock/useMock";
-import { MockData } from "@shared/lib/types";
 
-export const Table = () => {
-  const { mocks } = useMock();
+type Props = {
+  mocks: MockUIItem[];
+};
 
+export const Table = ({ mocks }: Props) => {
   const columns = [
     {
-      title: "URL",
-      dataIndex: "url",
-      key: "url",
-      width: "35%",
+      title: "Name",
+      dataIndex: "renderName",
+      key: "name",
+      width: "25%",
+      align: "center" as AlignType,
       ellipsis: true,
-      render: (text: string) => <Hint text={text} />,
+    },
+    {
+      title: "URL",
+      dataIndex: "renderURL",
+      key: "url",
+      width: "15%",
+      align: "center" as AlignType,
+      ellipsis: true,
     },
     {
       title: "Response",
-      dataIndex: "response",
+      dataIndex: "renderResponse",
       key: "response",
-      width: "35%",
+      width: "15%",
+      align: "center" as AlignType,
       ellipsis: true,
-      render: (text: string) => <Hint text={text} />,
     },
     {
-      title: "De/Activate",
-      dataIndex: "isActive",
+      title: "On/off",
+      dataIndex: "renderSwitch",
       key: "isActive",
       width: "15%",
       align: "center" as AlignType,
-      render: (isActive: boolean, record: MockData) => (
-        <EnableMockSwitch isActive={isActive} record={record} />
-      ),
     },
     {
       title: "Actions",
+      dataIndex: "renderActions",
       key: "actions",
-      width: "15%",
+      width: "20%",
       align: "center" as AlignType,
-      render: (_: unknown, record: MockData) => (
-        <Space>
-          <EditButton record={record} />
-          <ComfirmDeleteMock record={record} />
-        </Space>
-      ),
     },
   ];
 
   return (
     <AntTable
+      title={() => "Saved Mocks"}
       dataSource={mocks}
       columns={columns}
       rowKey="id"
       pagination={false}
       size="small"
-      scroll={{ y: 400 }}
+      scroll={{ y: 340 }}
       bordered
     />
   );

@@ -1,5 +1,5 @@
 import { AddMockPage } from "@pages/addMock";
-import { MockListPage } from "@pages/MockList";
+import { SavedMocksPage } from "@pages/SavedMocks";
 import { SettingsPage } from "@pages/Settings";
 import { createMemoryRouter, RouterProvider } from "react-router";
 
@@ -14,7 +14,7 @@ const router = createMemoryRouter([
   },
   {
     path: "/list",
-    element: <MockListPage />,
+    element: <SavedMocksPage />,
   },
   {
     path: "/settings",

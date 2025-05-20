@@ -11,17 +11,34 @@ export const useMockForm = (mockId?: string) => {
     ? mocks.find((mock) => mock.id === mockId)
     : undefined;
 
-  const handleSubmit = async (values: { url: string; response: string }) => {
+  const handleSubmit = async (values: {
+    name: string;
+    url: string;
+    response: string;
+  }) => {
     try {
       setIsSubmitting(true);
+
+      const isNameDuplicate = mocks.some(
+        (mock) => mock.name === values.name && mock.id !== mockId
+      );
+
+      if (isNameDuplicate) {
+        setStatus({
+          type: "error",
+          message: MESSAGES.MOCK_NAME_EXIST,
+        });
+        return false;
+      }
+
       const mockData = createMockData(values, editingMock);
 
       if (editingMock) {
         const isUpdated = await updateMock(mockData);
         return isUpdated;
       } else {
-        await addMock(mockData);
-        return true;
+        const isAdded = await addMock(mockData);
+        return isAdded;
       }
     } catch {
       setStatus({ type: "error", message: MESSAGES.MOCK_SAVE_FAILED });

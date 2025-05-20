@@ -2,18 +2,67 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Extension</title>
+    <title>Mock API extension</title>
     <style>
       body {
         margin: 0;
         padding: 0;
       }
       #app {
-        width: 700px;
-        height: 550px;
+        width: 550px;
+        height: 600px;
         margin: 0;
         overflow: hidden;
         padding: 0;
+      }
+      .scrollable {
+        overflow-y: auto;
+        max-height: calc(100vh - 180px);
+      }
+      .scrollable::-webkit-scrollbar {
+        display: none;
+      }
+      .cm-scroller::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .cm-scroller::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .cm-scroller::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.3);
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      .cm-scroller:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.5);
+      }
+
+      .cm-scroller {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
+      }
+      .ant-table-body::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      .ant-table-body::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .ant-table-body::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.3);
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+      .ant-table-body:hover::-webkit-scrollbar-thumb {
+        background-color: rgba(100, 100, 100, 0.5);
+      }
+      .ant-table-body {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
       }
     </style>
   </head>

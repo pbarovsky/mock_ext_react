@@ -1,10 +1,10 @@
 import { PageLayout } from "@widgets/PageLayout";
-import { MockListTable } from "@widgets/Table";
+import { SavedMocksWidget } from "@widgets/SavedMocks";
 
 export const Page = () => {
   return (
     <PageLayout activeNav="list">
-      <MockListTable />
+      <SavedMocksWidget />
     </PageLayout>
   );
 };
