@@ -11,6 +11,10 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 - Support for any resources: AJAX (fetch, XMLHttpRequest) and other requests.
 - Easy mocks management: add, edit and delete mocks in the extension interface.
 - Light and dark theme.
+- Selecting the type of display of saved mocks (list/table).
+- Exporting and importing mocks in json format.
+- Handy json editor.
+- Nice UI.
 
 ## How it works
 
@@ -21,10 +25,11 @@ Extension for Chromium-based browsers. This extension allows you to mock API req
 ## Technologies
 
 - React + TypeScript
-- React router
+- react-router
 - Ant Design
 - Chrome Extensions API
 - Vite + yarn
+- react-codemirror
 - FSD architecture
 
 ## Who needs it?
@@ -88,27 +93,21 @@ yarn build
 </p>
 
 <p align="center">
-  <img src="./images/2.png" alt="Список моков (тёмная тема)"/>
-  <br>List of mocks (dark theme)
+  <img src="./images/2.png" alt="Список моков (список)"/>
+  <br>Saved mocks (list variant)
 </p>
 
 <p align="center">
-  <img src="./images/2_light.png" alt="Список моков (светлая тема)"/>
-  <br>List of mocks (light theme)
+  <img src="./images/3.png" alt="Список моков (таблица)"/>
+  <br>Saved mocks (table variant)
 </p>
 
 <p align="center">
-  <img src="./images/3.png" alt="Настройки"/>
+  <img src="./images/4.png" alt="Настройки темная тема"/>
   <br>Settings
 </p>
 
 <p align="center">
-  <img src="./images/use_1.png" alt="Пример - До"/>
-  <br>Example of using the extension. The mocks are turned off.
-</p>
-
-<p align="center">
-  <img src="./images/use_2.png" alt="Пример - После"/>
-  <br>
-An example of how to use the extension. Mocks enabled.
+  <img src="./images/5.png" alt="Настройки светлая тема"/>
+  <br>Settings (light theme)
 </p>
