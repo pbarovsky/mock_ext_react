@@ -4,6 +4,7 @@ import { StatusTag } from "@shared/ui/Status";
 import { urlRules, responseRules } from "@shared/utils/validation";
 import { MockData, Status } from "../../../shared/lib/types";
 import { formattedJson } from "@shared/utils/jsonUtils";
+import { TextArea } from "@shared/ui/TextArea";
 
 interface Props {
   initialValues?: MockData;
@@ -104,9 +105,11 @@ export const Form = ({
         <Input placeholder="https://mockapi.com/data" />
       </AntForm.Item>
       <AntForm.Item label="Response" name="response" rules={responseRules}>
-        <Input.TextArea
-          rows={5}
-          placeholder='{"content": "mocked data", "data": {}}'
+        <TextArea
+          value={formValues.response}
+          onChange={(value) =>
+            setFormValues((prev) => ({ ...prev, response: value }))
+          }
         />
       </AntForm.Item>
       <AntForm.Item>

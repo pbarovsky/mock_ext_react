@@ -10,7 +10,7 @@ export const List = ({ mocks }: Props) => {
     <AntList
       header="Saved Mocks"
       bordered
-      className="scrollable"
+      className="scrollable cm-scroller"
       itemLayout="horizontal"
       dataSource={mocks}
       renderItem={(mock) => (

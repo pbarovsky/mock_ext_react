@@ -19,7 +19,6 @@ export const useMockForm = (mockId?: string) => {
     try {
       setIsSubmitting(true);
 
-      // Check for duplicate names
       const isNameDuplicate = mocks.some(
         (mock) => mock.name === values.name && mock.id !== mockId
       );
@@ -27,7 +26,7 @@ export const useMockForm = (mockId?: string) => {
       if (isNameDuplicate) {
         setStatus({
           type: "error",
-          message: "A mock with this name already exists",
+          message: MESSAGES.MOCK_NAME_EXIST,
         });
         return false;
       }
@@ -38,8 +37,8 @@ export const useMockForm = (mockId?: string) => {
         const isUpdated = await updateMock(mockData);
         return isUpdated;
       } else {
-        await addMock(mockData);
-        return true;
+        const isAdded = await addMock(mockData);
+        return isAdded;
       }
     } catch {
       setStatus({ type: "error", message: MESSAGES.MOCK_SAVE_FAILED });

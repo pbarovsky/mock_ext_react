@@ -32,8 +32,8 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
   const addMock = useCallback(
     async (mock: MockData) => {
       if (mocks.some((m) => m.url === mock.url)) {
-        setStatus({ type: "error", message: MESSAGES.MOCK_EXIST });
-        return;
+        setStatus({ type: "error", message: MESSAGES.MOCK_URL_EXIST });
+        return false;
       }
 
       const cleanedMock: MockData = {
@@ -43,6 +43,7 @@ export const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 
       await saveMocks([...mocks, cleanedMock]);
       setStatus({ type: "success", message: MESSAGES.MOCK_ADDED });
+      return true;
     },
     [mocks, setStatus, saveMocks]
   );
