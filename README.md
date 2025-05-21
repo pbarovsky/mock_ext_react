@@ -111,3 +111,8 @@ yarn build
   <img src="./images/5.png" alt="Настройки светлая тема"/>
   <br>Settings (light theme)
 </p>
+
+<p align="center">
+  <img src="./images/6.png" alt="Настройки импорт"/>
+  <br>Import mocks as json file
+</p>
